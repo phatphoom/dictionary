@@ -15,7 +15,7 @@ let translate = document.querySelector(".translate")
 let close = document.querySelector(".close")
 let volume = document.querySelector(".audio")
 let audio;
-
+let contrainer = document.querySelector(".empty")
 
 // first call : call the dictonary
 btn.addEventListener("click", () => {
@@ -27,12 +27,12 @@ btn.addEventListener("click", () => {
             resulte.innerText = data[0].meanings[0].definitions[0].example
             resultpos.innerText = data[0].meanings[0].partOfSpeech
             resultsyn.innerText = data[0].meanings[0].synonyms[0]
-            audio = new Audio (data[0].phonetics[1].audio)
+            audio = new Audio(data[0].phonetics[1].audio)
             translate.style.display = "block"
         })
-        
+
 })
-volume.addEventListener('click',()=>{
+volume.addEventListener('click', () => {
     audio.play();
 })
 // second call : call the translate
@@ -49,6 +49,9 @@ translate.addEventListener('click', () => {
         })
 })
 clearbtn.addEventListener("click", () => {
-    input.value = ""
     input.focus();
+    let p = document.createElement("p");
+    p.innerText = input.value
+    contrainer.appendChild(p)
+    input.value = ""
 })
