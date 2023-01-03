@@ -8,14 +8,15 @@ let resultw = document.getElementById("result-word")
 let resultph = document.getElementById("result-phonetics")
 let resultm = document.getElementById("result-mean")
 let resulte = document.getElementById("result-example")
+let resultpos = document.getElementById("result-pos")
+let resultsyn = document.getElementById("result-syn")
 let resultt = document.getElementById("translate-result")
 let translate = document.querySelector(".translate")
 let close = document.querySelector(".close")
 let volume = document.querySelector(".audio")
 let audio;
-function hightlight(string, target) {
-    return string.replace(target, `<span style="color:red">${target}</span>`)
-}
+
+
 // first call : call the dictonary
 btn.addEventListener("click", () => {
     fetch(url).then(res => res.json())
@@ -24,6 +25,8 @@ btn.addEventListener("click", () => {
             resultph.innerText = data[0].phonetics[1].text
             resultm.innerText = data[0].meanings[0].definitions[0].definition
             resulte.innerText = data[0].meanings[0].definitions[0].example
+            resultpos.innerText = data[0].meanings[0].partOfSpeech
+            resultsyn.innerText = data[0].meanings[0].synonyms[0]
             audio = new Audio (data[0].phonetics[1].audio)
             translate.style.display = "block"
         })
