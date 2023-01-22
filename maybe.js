@@ -26,7 +26,6 @@ function vocab() {
       <p>${data[0].meanings[0].definitions[0].example || ""}</p>
       `;
       let volume = data[0].phonetics[0].audio || data[0].phonetics[2].audio ;
-      // <i class="fas fa-volume-up"}></i>
       sound.setAttribute("src", volume);
     });
 }
